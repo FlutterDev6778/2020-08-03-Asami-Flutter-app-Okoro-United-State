@@ -1,1 +1,1 @@
-export 'AccountPage/index.dart';
+export './acccount_page_provider.dart';

@@ -22,11 +22,18 @@ class AccountPageStyles {
   double asamiAppbarBottomPadding;
   double appbarTitleFontSize;
 
-  double descriptionFontSiz;
-  double textFontSize;
-  double logoImageWidth;
+  double avatarImageSize;
+  double avatarContainerHeight;
+  double avatarContainerHorizontalPadding;
+  double avatarContainerVerticalPadding;
+  double avatarContainerItemSpacing;
 
-  double itemSpacing;
+  double textFontSize;
+  double iconSize;
+
+  double itemListHorizontalPadding;
+  double itemListVerticalPadding;
+  double itemHeight;
 
   AccountPageStyles(BuildContext context) {}
 }
@@ -53,17 +60,23 @@ class AccountPageMobileStyles extends AccountPageStyles {
     heightDp = ScreenUtil().setHeight(1);
     fontSp = ScreenUtil().setSp(1, allowFontScalingSelf: false);
 
-    primaryHorizontalPadding = widthDp * 50;
+    primaryHorizontalPadding = widthDp * 0;
     primaryVerticalPadding = widthDp * 0;
     asamiAppbarHeight = widthDp * 101;
     asamiAppbarBottomPadding = widthDp * 22;
     appbarTitleFontSize = fontSp * 30;
     safeAreaHeight = deviceHeight - asamiAppbarHeight - kBottomNavigationBarHeight;
 
-    descriptionFontSiz = fontSp * 20;
-    textFontSize = fontSp * 25;
-    logoImageWidth = widthDp * 200;
+    avatarImageSize = widthDp * 130;
+    avatarContainerHeight = widthDp * 220;
+    avatarContainerHorizontalPadding = widthDp * 20;
+    avatarContainerVerticalPadding = widthDp * 20;
+    avatarContainerItemSpacing = widthDp * 10;
 
-    itemSpacing = widthDp * 60;
+    textFontSize = fontSp * 20;
+    iconSize = widthDp * 32;
+    itemListHorizontalPadding = widthDp * 20;
+    itemListVerticalPadding = widthDp * 20;
+    itemHeight = widthDp * 60;
   }
 }

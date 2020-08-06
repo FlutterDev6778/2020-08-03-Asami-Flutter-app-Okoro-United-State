@@ -18,7 +18,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
 
+  void _init(BuildContext context) async {
+    await AuthProvider.of(context).init();
     Future.delayed(Duration(seconds: 1), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => BottomNavbar()));
     });
@@ -27,6 +30,8 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     _splashPageStyles = SplashPageMobileStyles(context);
+
+    _init(context);
 
     return MultiProvider(
       providers: [

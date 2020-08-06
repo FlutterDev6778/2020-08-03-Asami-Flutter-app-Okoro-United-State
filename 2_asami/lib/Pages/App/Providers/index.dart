@@ -1,2 +1,2 @@
-export 'AppData/index.dart';
-export './Auth/index.dart';
+export './app_data_provider.dart';
+export './auth_provider.dart';

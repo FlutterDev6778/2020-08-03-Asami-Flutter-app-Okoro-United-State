@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:keicy_progress_dialog/keicy_progress_dialog.dart';
+import 'package:keicy_raised_button/keicy_raised_button.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -64,56 +66,89 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
             horizontal: _accountPageStyles.primaryHorizontalPadding,
             vertical: _accountPageStyles.primaryVerticalPadding,
           ),
-          decoration: BoxDecoration(color: AccountPageColors.backColor),
+          decoration: BoxDecoration(color: Colors.white),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                AccountPageString.description,
-                style: TextStyle(
-                  fontSize: _accountPageStyles.descriptionFontSiz,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: _accountPageStyles.itemSpacing),
-              Image.asset(AppAssets.logo1, width: _accountPageStyles.logoImageWidth, fit: BoxFit.fitWidth),
-              SizedBox(height: _accountPageStyles.itemSpacing),
-              GestureDetector(
-                child: Text(
-                  AccountPageString.login,
-                  style: TextStyle(
-                    fontSize: _accountPageStyles.textFontSize,
-                    fontStyle: FontStyle.italic,
-                    color: AppColors.primaryColor,
-                    decorationStyle: TextDecorationStyle.solid,
-                    decorationColor: AppColors.primaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(height: _accountPageStyles.itemSpacing),
-              GestureDetector(
-                child: Text(
-                  AccountPageString.signup,
-                  style: TextStyle(
-                    fontSize: _accountPageStyles.textFontSize,
-                    fontStyle: FontStyle.italic,
-                    color: AppColors.primaryColor,
-                    decorationStyle: TextDecorationStyle.solid,
-                    decorationColor: AppColors.primaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(height: _accountPageStyles.widthDp * 100),
+              _containerAvatarContainer(context),
+              Expanded(child: _contanerItemList(context)),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _containerAvatarContainer(BuildContext context) {
+    return Container(
+      width: _accountPageStyles.deviceWidth,
+      height: _accountPageStyles.avatarContainerHeight,
+      color: AccountPageColors.backColor,
+      padding: EdgeInsets.symmetric(
+        horizontal: _accountPageStyles.avatarContainerHorizontalPadding,
+        vertical: _accountPageStyles.avatarContainerVerticalPadding,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(height: _accountPageStyles.avatarContainerItemSpacing),
+          KeicyNetworkImage(
+            url: AuthProvider.of(context).userModel.avatarUrl,
+            width: _accountPageStyles.avatarImageSize,
+            height: _accountPageStyles.avatarImageSize,
+            borderRadius: _accountPageStyles.avatarImageSize / 2,
+            borderColor: AccountPageColors.backColor,
+          ),
+          Text(
+            AuthProvider.of(context).userModel.name,
+            style: TextStyle(
+              fontSize: _accountPageStyles.textFontSize,
+              color: AppColors.primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _contanerItemList(BuildContext ocntext) {
+    return Container(
+      width: _accountPageStyles.deviceWidth,
+      padding: EdgeInsets.symmetric(
+        horizontal: _accountPageStyles.itemListHorizontalPadding,
+        vertical: _accountPageStyles.itemListVerticalPadding,
+      ),
+      child: ListView.separated(
+        itemCount: AccountPageString.itemList.length,
+        itemBuilder: (context, index) {
+          return KeicyRaisedButton(
+            width: double.infinity,
+            height: _accountPageStyles.itemHeight,
+            borderColor: Colors.black87,
+            borderRadius: _accountPageStyles.widthDp * 5,
+            borderWidth: 2,
+            padding: EdgeInsets.symmetric(horizontal: _accountPageStyles.itemListHorizontalPadding),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  AccountPageString.itemList[index],
+                  style: TextStyle(
+                    fontSize: _accountPageStyles.textFontSize,
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+            onPressed: () {},
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(height: _accountPageStyles.itemListVerticalPadding);
+        },
       ),
     );
   }
