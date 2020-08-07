@@ -1,4 +1,3 @@
-import 'package:asami_app/Pages/App/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -10,6 +9,8 @@ import 'package:asami_app/Pages/FeedListPage/feed_list_page.dart';
 import 'package:asami_app/Pages/PremiumPage/premium_page.dart';
 import 'package:asami_app/Pages/AccountInitPage/account_init_page.dart';
 import 'package:asami_app/Pages/AccountPage/account_page.dart';
+import 'package:asami_app/Pages/App/index.dart';
+import 'package:asami_app/Pages/MapViewPage/map_view_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   @override
@@ -98,9 +99,7 @@ class _BottomNavbarState extends State<BottomNavbar> with TickerProviderStateMix
   List<Widget> _buildScreens() {
     return [
       HomePage(),
-      Container(
-        child: Center(child: Text("one ")),
-      ),
+      MapViewPage(),
       FeedListPage(),
       PremiumPage(),
       Consumer<AuthProvider>(builder: (context, authProvider, _) {

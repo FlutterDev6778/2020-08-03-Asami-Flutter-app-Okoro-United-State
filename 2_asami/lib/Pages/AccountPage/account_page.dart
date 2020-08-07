@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keicy_progress_dialog/keicy_progress_dialog.dart';
 import 'package:keicy_raised_button/keicy_raised_button.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -12,6 +14,8 @@ import 'package:keicy_network_image/keicy_network_image.dart';
 import 'index.dart';
 import 'package:asami_app/Pages/App/index.dart';
 import 'package:asami_app/Models/index.dart';
+import 'package:asami_app/Pages/EditProfilePage/edit_profile_page.dart';
+import 'package:asami_app/Pages/TeaClubPage/tea_club_page.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -124,6 +128,36 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
       child: ListView.separated(
         itemCount: AccountPageString.itemList.length,
         itemBuilder: (context, index) {
+          Function onPressHandler = () {};
+          Widget icon = Icon(
+            Icons.person,
+            size: _accountPageStyles.iconSize,
+            color: Colors.white,
+          );
+          switch (index) {
+            case 0:
+              onPressHandler = () {
+                pushNewScreen(context, screen: EditProfilePage(), withNavBar: true);
+              };
+              icon = Icon(Icons.person, size: _accountPageStyles.iconSize);
+              break;
+            case 1:
+              onPressHandler = () {
+                pushNewScreen(context, screen: TeaClubPage(), withNavBar: true);
+              };
+              icon = FaIcon(FontAwesomeIcons.mugHot, size: _accountPageStyles.iconSize);
+              break;
+            case 2:
+              icon = Icon(Icons.help, size: _accountPageStyles.iconSize);
+              break;
+            case 3:
+              icon = Icon(Icons.list, size: _accountPageStyles.iconSize);
+              break;
+            case 4:
+              icon = Icon(Icons.lock_outline, size: _accountPageStyles.iconSize);
+              break;
+            default:
+          }
           return KeicyRaisedButton(
             width: double.infinity,
             height: _accountPageStyles.itemHeight,
@@ -133,6 +167,8 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
             padding: EdgeInsets.symmetric(horizontal: _accountPageStyles.itemListHorizontalPadding),
             child: Row(
               children: <Widget>[
+                icon,
+                SizedBox(width: _accountPageStyles.itemListHorizontalPadding),
                 Text(
                   AccountPageString.itemList[index],
                   style: TextStyle(
@@ -143,7 +179,7 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
                 )
               ],
             ),
-            onPressed: () {},
+            onPressed: onPressHandler,
           );
         },
         separatorBuilder: (BuildContext context, int index) {

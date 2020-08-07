@@ -5,4 +5,10 @@ class AppAssets {
 
   /// PremiumPage
   static String premiumBackImage = "lib/Assets/Images/premium.png";
+
+  /// MapViewPage
+  static String mapAppbarImage = "lib/Assets/Images/map_appbar.png";
+
+  /// TeaClubPage
+  static String subscriptionImage = "lib/Assets/Images/subscription.png";
 }

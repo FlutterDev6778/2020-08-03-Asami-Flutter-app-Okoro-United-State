@@ -9,6 +9,8 @@ import 'package:asami_app/Pages/FeedListPage/feed_list_page.dart';
 import 'package:asami_app/Pages/PremiumPage/premium_page.dart';
 import 'package:asami_app/Pages/AccountInitPage/account_init_page.dart';
 import 'package:asami_app/Pages/AccountPage/account_page.dart';
+import 'package:asami_app/Pages/HomePage/home_page.dart';
+import 'package:asami_app/Pages/MapViewPage/map_view_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -24,6 +26,8 @@ class App extends StatelessWidget {
         routes: {
           AppRoutes.splashPage: (context) => SplashPage(),
           AppRoutes.bottomNavbar: (context) => BottomNavbar(),
+          AppRoutes.homePage: (context) => HomePage(),
+          AppRoutes.mapViewPage: (context) => MapViewPage(),
           AppRoutes.feedListPage: (context) => FeedListPage(),
           AppRoutes.premiumPage: (context) => PremiumPage(),
           AppRoutes.accountInitPage: (context) => AccountInitPage(),

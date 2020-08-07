@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   void _init(BuildContext context) async {
     await AuthProvider.of(context).init();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => BottomNavbar()));
     });
   }

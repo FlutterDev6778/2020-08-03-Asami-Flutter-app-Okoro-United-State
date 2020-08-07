@@ -1,1 +1,1 @@
-class HomePageString {}
+class MapViewPageString {}

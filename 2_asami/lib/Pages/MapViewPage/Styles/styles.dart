@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:asami_app/Pages/App/Config/index.dart';
 
-class HomePageStyles {
+class MapViewPageStyles {
   double devicePixelRatio;
   double deviceWidth;
   double deviceHeight;
@@ -18,12 +18,28 @@ class HomePageStyles {
 
   double primaryHorizontalPadding;
   double primaryVerticalPadding;
+  double asamiAppbarHeight;
+  double asamiAppbarBottomPadding;
+  double appbarTitleFontSize;
 
-  HomePageStyles(BuildContext context) {}
+  double logoImageWidth;
+
+  /// sliding panel
+  double slidingPanelMaxHeight;
+  double slidinghorizontalPadding;
+  double slidingVerticalPadding;
+  double tapLineWidth;
+  double itemTitleFontSize;
+  double explorerFontSize;
+  double itemNameFontSize;
+  double itemWidth;
+  double itemHeight;
+
+  MapViewPageStyles(BuildContext context) {}
 }
 
-class HomePageMobileStyles extends HomePageStyles {
-  HomePageMobileStyles(BuildContext context) : super(context) {
+class MapViewPageMobileStyles extends MapViewPageStyles {
+  MapViewPageMobileStyles(BuildContext context) : super(context) {
     ScreenUtil.init(
       context,
       width: ResponsiveDesignSettings.mobileDesignWidth,
@@ -46,5 +62,22 @@ class HomePageMobileStyles extends HomePageStyles {
 
     primaryHorizontalPadding = widthDp * 0;
     primaryVerticalPadding = widthDp * 0;
+    asamiAppbarHeight = widthDp * 101;
+    asamiAppbarBottomPadding = widthDp * 15;
+    appbarTitleFontSize = fontSp * 30;
+    safeAreaHeight = deviceHeight - asamiAppbarHeight - kBottomNavigationBarHeight;
+
+    logoImageWidth = widthDp * 150;
+
+    /// sliding panle
+    slidingPanelMaxHeight = widthDp * 255;
+    slidinghorizontalPadding = widthDp * 10;
+    slidingVerticalPadding = widthDp * 20;
+    tapLineWidth = widthDp * 95;
+    itemTitleFontSize = fontSp * 25;
+    explorerFontSize = fontSp * 18;
+    itemNameFontSize = fontSp * 16;
+    itemWidth = widthDp * 116;
+    itemHeight = widthDp * 137;
   }
 }

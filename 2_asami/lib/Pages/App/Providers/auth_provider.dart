@@ -7,6 +7,11 @@ import 'package:asami_app/Pages/App/index.dart';
 import 'package:asami_app/Models/index.dart';
 import 'package:asami_app/Helpers/index.dart';
 
+enum AuthState {
+  IsLogin,
+  IsNotLogin,
+}
+
 class AuthProvider extends ChangeNotifier {
   static AuthProvider of(BuildContext context, {bool listen = false}) => Provider.of<AuthProvider>(context, listen: listen);
 
@@ -15,22 +20,22 @@ class AuthProvider extends ChangeNotifier {
 
   bool _rememberMe = false;
   bool get rememberMe => _rememberMe;
-  void setRememberMe(bool rememberMe, {bool isNotifiable = false}) {
+  Future<void> setRememberMe(bool rememberMe, {bool isNotifiable = false}) async {
     if (_rememberMe != rememberMe) {
       _rememberMe = rememberMe;
       if (isNotifiable) notifyListeners();
-      storeDataToLocal(key: _rememberMeStoreKey, value: _rememberMe, type: StorableDataType.BOOL);
+      await storeDataToLocal(key: _rememberMeStoreKey, value: _rememberMe, type: StorableDataType.BOOL);
     }
   }
 
   UserModel _userModel = UserModel();
   UserModel get userModel => _userModel;
-  void setUserModel(UserModel userModel, {bool isNotifiable = false}) {
+  Future<void> setUserModel(UserModel userModel, {bool isNotifiable = false}) async {
     if (_userModel != userModel) {
       _userModel = userModel;
       if (isNotifiable) notifyListeners();
       if (_rememberMe) {
-        storeDataToLocal(key: _userModelStoreKey, value: json.encode(_userModel.toJson()), type: StorableDataType.String);
+        await storeDataToLocal(key: _userModelStoreKey, value: json.encode(_userModel.toJson()), type: StorableDataType.String);
       }
     }
   }
@@ -65,7 +70,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void signHandler() async {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 2), () async {
       _authState = AuthState.IsLogin;
       UserModel userModel = UserModel();
       userModel.name = "Test Name";
@@ -73,8 +78,8 @@ class AuthProvider extends ChangeNotifier {
       userModel.avatarUrl =
           "https://image.freepik.com/free-photo/beautiful-young-blonde-caucasian-woman-with-wavy-hair-looking-her-shoulder_1098-17388.jpg";
       userModel.ts = DateTime.now().millisecondsSinceEpoch;
-      setRememberMe(true);
-      setUserModel(userModel);
+      await setRememberMe(true);
+      await setUserModel(userModel);
       notifyListeners();
     });
   }

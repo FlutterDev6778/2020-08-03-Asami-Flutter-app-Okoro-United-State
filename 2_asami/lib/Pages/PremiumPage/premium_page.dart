@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:asami_app/Pages/PremiumMemberPage/premium_member_page.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -95,7 +97,9 @@ class _PremiumPageState extends State<PremiumPage> with TickerProviderStateMixin
                     decoration: TextDecoration.underline,
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  pushNewScreen(context, screen: PremiumMemberPage(), withNavBar: true);
+                },
               ),
               SizedBox(height: _premiumPageStyles.itemSpacing),
               GestureDetector(
@@ -110,7 +114,9 @@ class _PremiumPageState extends State<PremiumPage> with TickerProviderStateMixin
                     decoration: TextDecoration.underline,
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  pushNewScreen(context, screen: PremiumMemberPage(), withNavBar: true);
+                },
               ),
               SizedBox(height: _premiumPageStyles.widthDp * 100),
             ],
