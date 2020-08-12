@@ -11,6 +11,7 @@ import 'package:keicy_network_image/keicy_network_image.dart';
 import 'index.dart';
 import 'package:asami_app/Pages/App/index.dart';
 import 'package:asami_app/Models/index.dart';
+import '../../Pages/PostFeedPage/post_feed_page.dart';
 
 class FeedListPage extends StatefulWidget {
   @override
@@ -88,7 +89,9 @@ class _FeedListPageState extends State<FeedListPage> with TickerProviderStateMix
             size: _feedListPageStyles.floatingButtonSize,
             color: Colors.white,
           ),
-          onPressed: null,
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PostFeedPage()));
+          },
         ),
       ),
     );

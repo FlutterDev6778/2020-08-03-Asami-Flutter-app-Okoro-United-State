@@ -3,6 +3,7 @@ class UserModel {
   String name;
   String email;
   String avatarUrl;
+  String uid;
   int ts;
 
   UserModel({
@@ -10,6 +11,7 @@ class UserModel {
     this.name = "",
     this.email = "",
     this.avatarUrl = "",
+    this.uid = "",
     this.ts = 0,
   });
 
@@ -18,6 +20,7 @@ class UserModel {
         name = (json["name"] != null) ? json["name"] : "",
         email = (json["email"] != null) ? json["email"] : "",
         avatarUrl = (json["avatarUrl"] != null) ? json["avatarUrl"] : "",
+        uid = (json["uid"] != null) ? json["uid"] : "",
         ts = (json["ts"] != null) ? json["ts"] : 0;
 
   Map<String, dynamic> toJson() {
@@ -26,6 +29,7 @@ class UserModel {
       "name": (name != null) ? name : "",
       "email": (email != null) ? email : "",
       "avatarUrl": (avatarUrl != null) ? avatarUrl : "",
+      "uid": (uid != null) ? uid : "",
       "ts": (ts != null) ? ts : "",
     };
   }

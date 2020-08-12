@@ -51,18 +51,18 @@ class _PremiumMemberPageState extends State<PremiumMemberPage> with TickerProvid
             alignment: Alignment.bottomCenter,
             color: AppColors.appbarColor,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: _premiumMemberPageStyles.appbarIconSize,
-                    color: Colors.white,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.of(context).pop();
+                //   },
+                //   child: Icon(
+                //     Icons.arrow_back_ios,
+                //     size: _premiumMemberPageStyles.appbarIconSize,
+                //     color: Colors.white,
+                //   ),
+                // ),
                 Text(
                   PremiumMemberPageString.appbarTitle,
                   style: TextStyle(
@@ -71,16 +71,16 @@ class _PremiumMemberPageState extends State<PremiumMemberPage> with TickerProvid
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: _premiumMemberPageStyles.appbarIconSize,
-                    color: AppColors.appbarColor,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.of(context).pop();
+                //   },
+                //   child: Icon(
+                //     Icons.arrow_back_ios,
+                //     size: _premiumMemberPageStyles.appbarIconSize,
+                //     color: AppColors.appbarColor,
+                //   ),
+                // ),
               ],
             ),
           ),

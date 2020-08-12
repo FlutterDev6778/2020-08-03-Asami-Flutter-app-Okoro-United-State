@@ -11,4 +11,7 @@ class AppAssets {
 
   /// TeaClubPage
   static String subscriptionImage = "lib/Assets/Images/subscription.png";
+
+  /// LoginPage
+  static String avatarImage = "lib/Assets/Images/avatar.png";
 }

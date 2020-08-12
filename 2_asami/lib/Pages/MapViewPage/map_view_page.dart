@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asami_app/Constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -21,12 +22,14 @@ class MapViewPage extends StatefulWidget {
 class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin {
   MapViewPageStyles _mapViewPageStyles;
   GoogleMapController _mapController;
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   PanelController _panelController = PanelController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _getMarkers();
   }
 
   @override
@@ -41,10 +44,27 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
     );
   }
 
+  void _getMarkers() {
+    for (var i = 0; i < AppConstants.countryLatLngList.length; i++) {
+      MarkerId markerId = MarkerId(AppConstants.countryLatLngList[i]["name"]);
+      Marker marker = Marker(
+        draggable: false,
+        markerId: markerId,
+        position: LatLng(
+          AppConstants.countryLatLngList[i]["lat"],
+          AppConstants.countryLatLngList[i]["long"],
+        ),
+        infoWindow: InfoWindow(title: AppConstants.countryLatLngList[i]["name"]),
+        onTap: () {
+          _panelController.open();
+        },
+        consumeTapEvents: true,
+      );
+      markers[markerId] = marker;
+    }
+  }
+
   Widget _containerMain(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _panelController.open();
-    });
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -71,14 +91,15 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
                 onMapCreated: (GoogleMapController controller) {
                   _mapController = controller;
                 },
-                initialCameraPosition: const CameraPosition(target: LatLng(0.0, 0.0), zoom: 3),
+                initialCameraPosition: CameraPosition(target: LatLng(-12.401, 15.629), zoom: 2.01),
                 rotateGesturesEnabled: false,
+                markers: Set<Marker>.of(markers.values),
+                onTap: (LatLng pos) {
+                  // print("latitude:  ${pos.latitude}");
+                  // print("longitude:  ${pos.longitude}");
+                },
               ),
             ),
-            // onTap: () {
-            //   print("===================");
-            //   _panelController.open();
-            // },
           ),
           controller: _panelController,
           minHeight: 0,

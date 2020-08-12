@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'index.dart';
-import 'package:asami_app/Pages/App/index.dart';
+import '../../Constants/index.dart';
 
 class HomePage extends StatefulWidget {
   @override

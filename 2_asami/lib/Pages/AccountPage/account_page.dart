@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:asami_app/Pages/PrivacyPage/privacy_page.dart';
+import 'package:asami_app/Pages/TermsPage/terms_page.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -149,9 +151,15 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
               break;
             case 2:
               icon = Icon(Icons.help, size: _accountPageStyles.iconSize);
+              onPressHandler = () {
+                pushNewScreen(context, screen: TermsPage(), withNavBar: true);
+              };
               break;
             case 3:
               icon = Icon(Icons.list, size: _accountPageStyles.iconSize);
+              onPressHandler = () {
+                pushNewScreen(context, screen: PrivacyPage(), withNavBar: true);
+              };
               break;
             case 4:
               icon = Icon(Icons.lock_outline, size: _accountPageStyles.iconSize);

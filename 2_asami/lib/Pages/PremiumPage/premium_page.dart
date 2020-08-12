@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:asami_app/Pages/LoginPage/login_page.dart';
 import 'package:asami_app/Pages/PremiumMemberPage/premium_member_page.dart';
+import 'package:asami_app/Pages/SignupPage/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -98,7 +100,7 @@ class _PremiumPageState extends State<PremiumPage> with TickerProviderStateMixin
                   ),
                 ),
                 onTap: () {
-                  pushNewScreen(context, screen: PremiumMemberPage(), withNavBar: true);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => LoginPage(isPremiumUser: true)));
                 },
               ),
               SizedBox(height: _premiumPageStyles.itemSpacing),
@@ -115,7 +117,7 @@ class _PremiumPageState extends State<PremiumPage> with TickerProviderStateMixin
                   ),
                 ),
                 onTap: () {
-                  pushNewScreen(context, screen: PremiumMemberPage(), withNavBar: true);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignupPage(isPremiumUser: true)));
                 },
               ),
               SizedBox(height: _premiumPageStyles.widthDp * 100),

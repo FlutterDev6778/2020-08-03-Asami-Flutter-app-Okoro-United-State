@@ -1,18 +1,14 @@
 import 'dart:async';
 
-import 'package:asami_app/Pages/AccountPage/account_page.dart';
+import 'package:asami_app/Pages/SignupPage/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:date_time_format/date_time_format.dart';
-import 'package:keicy_progress_dialog/keicy_progress_dialog.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'package:keicy_network_image/keicy_network_image.dart';
-
 import 'index.dart';
-import 'package:asami_app/Pages/App/index.dart';
-import 'package:asami_app/Models/index.dart';
+import '../../Models/index.dart';
+import '../../Pages/LoginPage/login_page.dart';
+import '../../Pages/App/index.dart';
 
 class AccountInitPage extends StatefulWidget {
   @override
@@ -41,19 +37,7 @@ class _AccountInitPageState extends State<AccountInitPage> with TickerProviderSt
     );
   }
 
-  void _authListener(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      AuthProvider.of(context).addListener(() {
-        if (AuthProvider.of(context).authState == AuthState.IsLogin) {
-          if (KeicyProgressDialog.of(context).isShowing()) KeicyProgressDialog.of(context).hide();
-        }
-      });
-    });
-  }
-
   Widget _containerMain(BuildContext context) {
-    _authListener(context);
-
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -109,8 +93,7 @@ class _AccountInitPageState extends State<AccountInitPage> with TickerProviderSt
                   ),
                 ),
                 onTap: () async {
-                  await KeicyProgressDialog.of(context).show();
-                  AuthProvider.of(context).signHandler();
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
                 },
               ),
               SizedBox(height: _accountInitPageStyles.itemSpacing),
@@ -127,8 +110,7 @@ class _AccountInitPageState extends State<AccountInitPage> with TickerProviderSt
                   ),
                 ),
                 onTap: () async {
-                  await KeicyProgressDialog.of(context).show();
-                  AuthProvider.of(context).signHandler();
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignupPage()));
                 },
               ),
               SizedBox(height: _accountInitPageStyles.widthDp * 100),

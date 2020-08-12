@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:asami_app/Pages/App/Config/index.dart';
+
+import '../../../Config/index.dart';
 
 class BottomNavbarStyles {
   double devicePixelRatio;

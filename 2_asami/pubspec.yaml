@@ -34,6 +34,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   font_awesome_flutter: ^8.8.1
   google_maps_flutter: ^0.5.29
+  image_picker: ^0.6.7+4
   persistent_bottom_nav_bar: ^2.0.5
   provider: ^4.3.1
   shared_preferences: ^0.5.8  
@@ -59,6 +60,15 @@ dependencies:
   # services
   keicy_firebase_authentication:
     git: https://github.com/FlutterDev6778/keicy_firebase_authentication.git
+
+  keicy_firestore_data_provider:
+    git: https://github.com/FlutterDev6778/keicy_firestore_data_provider.git
+
+  keicy_storage_for_mobile:
+    git: https://github.com/FlutterDev6778/keicy_storage_for_mobile.git
+
+  keicy_utils:
+    git: https://github.com/FlutterDev6778/keicy_utils.git
 
   
 

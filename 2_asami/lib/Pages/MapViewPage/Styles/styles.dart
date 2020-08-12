@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:asami_app/Pages/App/Config/index.dart';
+
+import '../../../Config/index.dart';
 
 class MapViewPageStyles {
   double devicePixelRatio;
@@ -65,7 +66,7 @@ class MapViewPageMobileStyles extends MapViewPageStyles {
     asamiAppbarHeight = widthDp * 101;
     asamiAppbarBottomPadding = widthDp * 15;
     appbarTitleFontSize = fontSp * 30;
-    safeAreaHeight = deviceHeight - asamiAppbarHeight - kBottomNavigationBarHeight;
+    safeAreaHeight = safeAreaHeight - asamiAppbarHeight - kBottomNavigationBarHeight;
 
     logoImageWidth = widthDp * 150;
 
