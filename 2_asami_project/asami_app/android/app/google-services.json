@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "504970049345",
+    "firebase_url": "https://asami-app.firebaseio.com",
+    "project_id": "asami-app",
+    "storage_bucket": "asami-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504970049345:android:b990312dd22337436c53c0",
+        "android_client_info": {
+          "package_name": "com.example.asami_admin_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504970049345-dpokml72e0o8ja0ldnjft3ida922je8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asami_admin_app",
+            "certificate_hash": "1ec4cd4810fcf2398aecac75b2dd13c131eb8ca5"
+          }
+        },
+        {
+          "client_id": "504970049345-k58ifho9bjchopf4a1rnmsli8qf62t8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFDHULYDm4QqNc8yS5zdaf1wMSplLfN6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504970049345-k58ifho9bjchopf4a1rnmsli8qf62t8s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504970049345-hb50plveeq7jfafglcquhl86p4of6eve.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.asamiApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504970049345:android:daf588e18df1dcc66c53c0",
+        "android_client_info": {
+          "package_name": "com.example.asami_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504970049345-fo9h6o2qcm6nju7ve99c3fbpq0lfqpt8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asami_app",
+            "certificate_hash": "1ec4cd4810fcf2398aecac75b2dd13c131eb8ca5"
+          }
+        },
+        {
+          "client_id": "504970049345-k58ifho9bjchopf4a1rnmsli8qf62t8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFDHULYDm4QqNc8yS5zdaf1wMSplLfN6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504970049345-k58ifho9bjchopf4a1rnmsli8qf62t8s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504970049345-hb50plveeq7jfafglcquhl86p4of6eve.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.asamiApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

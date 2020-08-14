@@ -1,0 +1,10 @@
+Feed
+-They can add to feed
+-Delete feed added from users
+Push Notifications
+-Send push notifications
+-Can delete accounts
+
+Order Fulfillment
+-All premium members will show up in order fulfillment for tea
+-Every 10th of the month the order fulfillemt is reset to all users being unfulfilled(cloud function)

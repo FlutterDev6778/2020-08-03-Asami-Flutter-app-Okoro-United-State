@@ -1,0 +1,24 @@
+**UserApp Screens**
+
+- Splash Screen- First screen shown when entering the app.
+- Home Screen-Webview of your Mobile Website.
+- User Account
+   - Personal Info 
+   - Profile Picture
+   - Contact Info
+   - Posts
+- Members Screen-Access to all the promo codes on your shop
+- The member can see exclusive promotions & sales going on.
+- News Feed-Customers & Admin can post content
+- Post Feed
+- Travel Link to Trip Planning Tools
+- Interactive Map: Each Country will Have Markers when the markers are pressed a screen pops up displaying the different teas. Then there will be an explore country screen that takes users to a detailed screen. Which display attractions, fun facts,about the country
+- Features
+   - Subscription under Monthly Tea Packages, when someone becomes a member they get tea shipped automatically to their house. 
+
+**Admin App**
+
+- Login
+- Post to Feed
+- Add Current Promotions
+- Push Notifications page to send notifications to customers.

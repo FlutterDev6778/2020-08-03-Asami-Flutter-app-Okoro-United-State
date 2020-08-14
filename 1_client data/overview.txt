@@ -1,0 +1,9 @@
+**Business Website:**
+https://www.asamiteashop.com/
+**Product Vision Statement**
+The purpose of this app is to give users the ability to view the Asamite website and learn about tea's as well as places in Africa and travel their.
+**Business Requirements:**
+
+- Shop from website.
+- Join the tea club
+- Learn about herbs and different countries in Africa.
