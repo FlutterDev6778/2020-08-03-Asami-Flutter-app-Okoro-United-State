@@ -1,5 +1,7 @@
 class AppConstants {
   static String websiteUrl = "https://www.asamiteashop.com/";
+  static String rootStoragePath = "gs://asami-app.appspot.com/";
+
   static List<Map<String, dynamic>> countryLatLngList = [
     {
       "name": "Morroco",

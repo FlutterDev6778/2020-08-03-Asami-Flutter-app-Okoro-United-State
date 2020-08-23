@@ -29,7 +29,6 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getMarkers();
   }
 
   @override
@@ -46,7 +45,7 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
     );
   }
 
-  void _getMarkers() {
+  void _getMarkers(MapViewPageProvider mapViewPageProvider) {
     for (var i = 0; i < AppConstants.countryLatLngList.length; i++) {
       MarkerId markerId = MarkerId(AppConstants.countryLatLngList[i]["name"]);
       Marker marker = Marker(
@@ -59,6 +58,7 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
         infoWindow: InfoWindow(title: AppConstants.countryLatLngList[i]["name"]),
         onTap: () {
+          mapViewPageProvider.setCountryName(AppConstants.countryLatLngList[i]["name"]);
           _panelController.open();
         },
         consumeTapEvents: true,
@@ -68,53 +68,56 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
   }
 
   Widget _containerMain(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(_mapViewPageStyles.deviceWidth, _mapViewPageStyles.asamiAppbarHeight),
-        child: Container(
-          padding: EdgeInsets.all(_mapViewPageStyles.asamiAppbarBottomPadding),
-          alignment: Alignment.bottomCenter,
-          decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(AppAssets.mapAppbarImage), fit: BoxFit.cover),
-          ),
-          child: Image.asset(AppAssets.logo1, width: _mapViewPageStyles.logoImageWidth, fit: BoxFit.fitWidth),
-        ),
-      ),
-      body: SlidingUpPanel(
-        body: GestureDetector(
+    return Consumer<MapViewPageProvider>(builder: (context, mapViewPageProvider, _) {
+      _getMarkers(mapViewPageProvider);
+      return Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size(_mapViewPageStyles.deviceWidth, _mapViewPageStyles.asamiAppbarHeight),
           child: Container(
-            width: _mapViewPageStyles.deviceWidth,
-            height: _mapViewPageStyles.safeAreaHeight,
-            padding: EdgeInsets.symmetric(
-              horizontal: _mapViewPageStyles.primaryHorizontalPadding,
-              vertical: _mapViewPageStyles.primaryVerticalPadding,
+            padding: EdgeInsets.all(_mapViewPageStyles.asamiAppbarBottomPadding),
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(AppAssets.mapAppbarImage), fit: BoxFit.cover),
             ),
-            child: GoogleMap(
-              onMapCreated: (GoogleMapController controller) {
-                _mapController = controller;
-              },
-              initialCameraPosition: CameraPosition(target: LatLng(-12.401, 15.629), zoom: 2.01),
-              rotateGesturesEnabled: false,
-              markers: Set<Marker>.of(markers.values),
-              onTap: (LatLng pos) {
-                // print("latitude:  ${pos.latitude}");
-                // print("longitude:  ${pos.longitude}");
-              },
-            ),
+            child: Image.asset(AppAssets.logo1, width: _mapViewPageStyles.logoImageWidth, fit: BoxFit.fitWidth),
           ),
         ),
-        controller: _panelController,
-        minHeight: 0,
-        maxHeight: _mapViewPageStyles.slidingPanelMaxHeight,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(_mapViewPageStyles.widthDp * 30)),
-        boxShadow: null,
-        backdropColor: Colors.transparent,
-        panel: _contianerSlidingPanel(context),
-      ),
-    );
+        body: SlidingUpPanel(
+          body: GestureDetector(
+            child: Container(
+              width: _mapViewPageStyles.deviceWidth,
+              height: _mapViewPageStyles.safeAreaHeight,
+              padding: EdgeInsets.symmetric(
+                horizontal: _mapViewPageStyles.primaryHorizontalPadding,
+                vertical: _mapViewPageStyles.primaryVerticalPadding,
+              ),
+              child: GoogleMap(
+                onMapCreated: (GoogleMapController controller) {
+                  _mapController = controller;
+                },
+                initialCameraPosition: CameraPosition(target: LatLng(-12.401, 15.629), zoom: 2.01),
+                rotateGesturesEnabled: false,
+                markers: Set<Marker>.of(markers.values),
+                onTap: (LatLng pos) {
+                  // print("latitude:  ${pos.latitude}");
+                  // print("longitude:  ${pos.longitude}");
+                },
+              ),
+            ),
+          ),
+          controller: _panelController,
+          minHeight: 0,
+          maxHeight: _mapViewPageStyles.slidingPanelMaxHeight,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(_mapViewPageStyles.widthDp * 30)),
+          boxShadow: null,
+          backdropColor: Colors.transparent,
+          panel: _contianerSlidingPanel(context, mapViewPageProvider),
+        ),
+      );
+    });
   }
 
-  Widget _contianerSlidingPanel(BuildContext context) {
+  Widget _contianerSlidingPanel(BuildContext context, MapViewPageProvider mapViewPageProvider) {
     return Container(
       width: _mapViewPageStyles.deviceWidth,
       height: _mapViewPageStyles.slidingPanelMaxHeight,
@@ -136,7 +139,7 @@ class _MapViewPageState extends State<MapViewPage> with TickerProviderStateMixin
             color: Colors.black,
           ),
           Text(
-            "Nigeria",
+            mapViewPageProvider.countryName ?? "",
             style: TextStyle(
               fontSize: _mapViewPageStyles.itemTitleFontSize,
               color: AppColors.primaryColor,
